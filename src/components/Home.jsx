@@ -4,15 +4,16 @@ import Navigation from './Navigation';
 
 const Home = () => {
   return (
+    
     <div>
+      <div>
+        <Navigation />
+      </div>
       <div className={styles.homeImgContainer}>
         <img src={homeImage} alt="Glasses on top of a book" />
         <button>
           <a href="/shop">Find a product now</a>
         </button>
-      </div>
-      <div>
-        <Navigation />
       </div>
     </div>
     // img

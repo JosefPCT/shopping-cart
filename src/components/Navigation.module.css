@@ -5,3 +5,11 @@
 .pendingLink{
   color: pink;
 }
+
+.navContainer{
+  display: flex;
+  gap: 8px;
+  padding: 24px;
+  background-color: #F8F8F8;
+}
+

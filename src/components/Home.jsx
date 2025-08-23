@@ -1,10 +1,10 @@
 import styles from './Home.module.css'
 import homeImage from '../assets/glassesbook.jpg'
 import Navigation from './Navigation';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
-    
     <>
       <div>
         <Navigation />
@@ -12,7 +12,7 @@ const Home = () => {
       <div className={styles.homeImgContainer}>
         <img src={homeImage} alt="Glasses on top of a book" />
         <button>
-          <a href="/shop">Find a product now</a>
+          <Link to="/shop">Find a product now</Link>
         </button>
       </div>
     </>

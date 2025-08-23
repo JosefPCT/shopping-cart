@@ -22,6 +22,9 @@ const Navigation = () => {
         >
         Shop</NavLink>  
       </div>
+      <div>
+        {/* nav checkout */}
+      </div>
     </>
     
   ); 

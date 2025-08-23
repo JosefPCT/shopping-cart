@@ -1,0 +1,24 @@
+.redBG{
+  background-color: red;
+}
+
+.homeImgContainer{
+  background-color: blue;
+  position: relative;
+}
+
+.homeImgContainer > img{
+  width: 100%;
+}
+
+.homeImgContainer > button{
+  position: absolute;
+  bottom: 10%;
+  left: 45%;
+  background-color: transparent;
+  border: 1px solid white;
+}
+
+.homeImgContainer > button:hover{
+  background-color: white;
+}

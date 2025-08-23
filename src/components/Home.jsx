@@ -1,6 +1,14 @@
+import styles from './Home.module.css'
+import homeImage from '../assets/glassesbook.jpg'
+
 const Home = () => {
   return (
-    <img src="" alt="" />
+    <div className={styles.homeImgContainer}>
+      <img src={homeImage} alt="Glasses on top of a book" />
+      <button>
+        <a href="/shop">Find a product now</a>
+      </button>
+    </div>
     // img
     // button
     // description

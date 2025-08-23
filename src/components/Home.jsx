@@ -5,7 +5,7 @@ import Navigation from './Navigation';
 const Home = () => {
   return (
     
-    <div>
+    <>
       <div>
         <Navigation />
       </div>
@@ -15,7 +15,7 @@ const Home = () => {
           <a href="/shop">Find a product now</a>
         </button>
       </div>
-    </div>
+    </>
     // img
     // button
     // description

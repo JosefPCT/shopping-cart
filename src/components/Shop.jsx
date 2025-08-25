@@ -1,5 +1,7 @@
 import Navigation from "./Navigation";
 import products from "../products";
+import styles from'./Shop.module.css';
+
 console.log(products[1]);
 
 const Shop = () =>{
@@ -12,7 +14,7 @@ const Shop = () =>{
           return(
             <li key={product.id}>
               <div>
-                <img src={`../src/assets/${product.imgname}.jpg`} alt={'image of ' + product.name} />
+                <img className={styles.productThumb} src={`../src/assets/${product.imgname}.jpg`} alt={'image of ' + product.name} />
                 <p>Product Name: {product.name}</p>
                 <p>Price: {product.price}</p>
               </div>

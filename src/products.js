@@ -1,3 +1,5 @@
+// import sanitizer from './assets/sanitizer.jpg';
+
 const products = [
   { 
     id: 1,

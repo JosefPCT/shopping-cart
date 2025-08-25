@@ -1,5 +1,5 @@
 import styles from './Home.module.css'
-import homeImage from '../assets/glassesbook.jpg'
+// import homeImage from '../assets/glassesbook.jpg'
 import Navigation from './Navigation';
 import { Link } from 'react-router-dom';
 

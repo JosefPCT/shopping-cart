@@ -17,6 +17,7 @@ const Shop = () =>{
                 <img className={styles.productThumb} src={`../src/assets/${product.imgname}.jpg`} alt={'image of ' + product.name} />
                 <p>Product Name: {product.name}</p>
                 <p>Price: {product.price}</p>
+                <input type="text" />
               </div>
             </li>
           );

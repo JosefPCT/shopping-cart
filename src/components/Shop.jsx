@@ -12,7 +12,7 @@ const Shop = () =>{
           return(
             <li key={product.id}>
               <div>
-                <img src={product.imgsrc} alt={'image of ' + product.name} />
+                <img src={`../src/assets/${product.imgname}.jpg`} alt={'image of ' + product.name} />
                 <p>Product Name: {product.name}</p>
                 <p>Price: {product.price}</p>
               </div>

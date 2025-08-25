@@ -2,14 +2,20 @@ const products = [
   { 
     id: 1,
     name: 'Test Product',
-    imgsrc: '/path/test',
+    imgname: '/path/test',
     price: 200,
   },
   {
     id: 2,
     name: 'Tounge Scraper',
-    imgsrc: 'path/tounge.jpg',
+    imgname: 'path/tounge.jpg',
     price: 400,
+  },
+  {
+    id: 3,
+    name: 'Sanitizer',
+    imgname: 'sanitizer',
+    price: 500,
   }
 ];
 

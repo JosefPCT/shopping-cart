@@ -10,7 +10,7 @@ const Home = () => {
         <Navigation />
       </div>
       <div className={styles.homeImgContainer}>
-        <img src={homeImage} alt="Glasses on top of a book" />
+        <img src='../src/assets/glassesbook.jpg' alt="Glasses on top of a book" />
         <button>
           <Link to="/shop">Find a product now</Link>
         </button>

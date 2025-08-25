@@ -9,11 +9,11 @@ const Shop = () =>{
     <>
       <Navigation />
       <h1>This is the shop page!</h1>
-      <ul>
+      <ul className={styles.productList}>
         {products.map(product => {
           return(
             <li key={product.id}>
-              <div>
+              <div className={styles.productContainer}>
                 <img className={styles.productThumb} src={`../src/assets/${product.imgname}.jpg`} alt={'image of ' + product.name} />
                 <p>Product Name: {product.name}</p>
                 <p>Price: {product.price}</p>

@@ -18,7 +18,7 @@ const Shop = () =>{
       setCart(prevCart => ({
         ...prevCart,
         [target.parentNode.id]: {
-          numOfProducts: target.previousSibling.value,
+          numOfProducts: parseInt(target.previousSibling.value),
         },
       }));
     }
@@ -31,9 +31,22 @@ const Shop = () =>{
     return products.find((product) => product.id === id);
   }
 
+  // Iterate through the cart object and get the total value of all `numOfProducts`, will be sent to Navigation component as a prop
+  function getTotalOfItems(){
+    console.log("getting total items in the cart...");
+    let total = 0;
+    console.log(cart);
+
+    for(const [key, value] of Object.entries(cart)){
+      total += value.numOfProducts;
+    }
+
+    return total;
+  }
+
   return(
     <>
-      <Navigation num={67} cartObj={cart} />
+      <Navigation num={getTotalOfItems()} cartObj={cart} />
       <h1>This is the shop page!</h1>
       <ul className={styles.productList}>
         {products.map(product => {

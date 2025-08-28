@@ -26,7 +26,7 @@ const Shop = () =>{
     // let x = getProductById(e.target.parentNode.id);
     // console.log(x);
 
-    // Working code 
+    // Working code, used for object data type of cart
     // if(getProductById(target.parentNode.id)){
     //   setCart(prevCart => ({
     //     ...prevCart,
@@ -36,6 +36,7 @@ const Shop = () =>{
     //   }));
     // }
 
+    // Used for array data type of cart items
     setCart(
       [
         ...cart,
@@ -104,8 +105,15 @@ const Shop = () =>{
       <>
         <h1>This is the cart page!</h1>
         <ul>
-          {cart.map(item => console.log(item))}
+          {cart.map(item => {
+             return(
+              <li key={cart.cartId}>
+                <p>{item.cartItem.name}</p>
+              </li>
+             );
+          })}
         </ul>
+        <button>Checkout</button>
       </>
     );
   }

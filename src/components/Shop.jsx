@@ -2,6 +2,7 @@ import Navigation from "./Navigation";
 import products from "../products";
 import styles from'./Shop.module.css';
 import { useState } from "react";
+import { Outlet } from "react-router-dom";
 
 console.log(products[1]);
 
@@ -63,6 +64,7 @@ const Shop = () =>{
           );
         })}
       </ul>
+      <Outlet />
     </>
   );
 }

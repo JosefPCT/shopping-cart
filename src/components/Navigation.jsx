@@ -5,7 +5,7 @@ const Navigation = (props) => {
   let location = useLocation();
 
   function isShopUrl(){
-    return location.pathname === '/shop';
+    return location.pathname === '/shop' || location.pathname ==='/shop/cart';
   }
 
   console.log("nav comp");
@@ -15,7 +15,11 @@ const Navigation = (props) => {
     return(
       <>
         <span>{props.num}</span>
-        <button>Cart</button>
+        <NavLink
+        to='/shop/cart'
+        >
+        Cart
+        </NavLink>
       </>
     );
   }

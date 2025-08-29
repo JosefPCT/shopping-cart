@@ -76,6 +76,11 @@ const Shop = () =>{
     console.log(cart);
   }
 
+  function removeCartItemHandler(e){
+    console.log('removing cart item...');
+    console.log(e.target.parentNode.parentNode.id);
+  }
+
   function getProductById(id){
     id = parseInt(id);
     console.log('getting products');
@@ -154,7 +159,7 @@ const Shop = () =>{
              return(
               <li key={item.cartId} id={item.cartId}>
                 <p>{item.cartItem.title}
-                  <button onClick=''>Remove item</button>
+                  <button onClick={removeCartItemHandler}>Remove item</button>
                 </p>
                 
               </li>

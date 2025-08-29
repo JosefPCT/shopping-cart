@@ -152,7 +152,7 @@ const Shop = () =>{
         <ul>
           {cart.map(item => {
              return(
-              <li key={cart.cartId}>
+              <li key={item.cartId}>
                 <p>{item.cartItem.title}</p>
               </li>
              );

@@ -1,15 +1,41 @@
 import Navigation from "./Navigation";
-import products from "../products";
+// import products from "../products";
 import styles from'./Shop.module.css';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 
-console.log(products[1]);
+// console.log(products[1]);
 
 const Shop = () =>{
+  const [apiProducts, setApiProducts] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [cart, setCart] = useState([]);
 
   let location = useLocation();
+
+  useEffect(() => {
+    const fetchProductApi = async() => {
+      try {
+        const resp = await fetch(
+          'https://fakestoreapi.com/products'
+        );
+        if(!resp.ok) {
+          throw new Error(`HTTP error: Status ${resp.status}`)
+        }
+        let productsData = await resp.json();
+        setApiProducts(productsData);
+        setError(null);
+      } catch (err) {
+        setError(err.message);
+        setApiProducts(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProductApi();
+  }, [])
 
   function isShopPage(){
     return location.pathname === '/shop';
@@ -37,16 +63,14 @@ const Shop = () =>{
     // }
 
     // Used for array data type of cart items
-    setCart(
-      [
+    setCart([
         ...cart,
         {
           cartId: crypto.randomUUID(),
           cartItem: getProductById(e.target.parentNode.id),
           productQuantity: parseInt(target.previousSibling.value),
         }
-      ]
-    );
+    ]);
 
 
     console.log(cart);
@@ -55,7 +79,7 @@ const Shop = () =>{
   function getProductById(id){
     id = parseInt(id);
     console.log('getting products');
-    return products.find((product) => product.id === id);
+    return apiProducts.find((product) => product.id === id);
   }
 
   // Iterate through the cart object and get the total value of all `numOfProducts`, will be sent to Navigation component as a prop
@@ -77,10 +101,13 @@ const Shop = () =>{
     return sum;
   }
 
+  // Render JSX
+
   function renderShop(){
     return(
       <>
-        <h1>This is the shop page!</h1>
+        {/* For local products */}
+        {/* <h1>This is the shop page!</h1>
         <ul className={styles.productList}>
           {products.map(product => {
             return(
@@ -88,6 +115,24 @@ const Shop = () =>{
                 <div id={product.id} className={styles.productContainer}>
                   <img className={styles.productThumb} src={`../src/assets/${product.imgname}.jpg`} alt={'image of ' + product.name} />
                   <p>Product Name: {product.name}</p>
+                  <p>Price: {product.price}</p>
+                  <input type="text" />
+                  <button onClick={addToCartHandler}>Add To Cart</button>
+                </div>
+              </li>
+            );
+          })}
+        </ul> */}
+
+        {/* For API products from fakestore api */}
+        <h1>This is the shop page!</h1>
+        <ul className={styles.productList}>
+          {apiProducts.map(product => {
+            return(
+              <li key={product.id}>
+                <div id={product.id} className={styles.productContainer}>
+                  <img className={styles.productThumb} src={product.image} alt={'image of ' + product.name} />
+                  <p>Product: {product.title}</p>
                   <p>Price: {product.price}</p>
                   <input type="text" />
                   <button onClick={addToCartHandler}>Add To Cart</button>
@@ -108,7 +153,7 @@ const Shop = () =>{
           {cart.map(item => {
              return(
               <li key={cart.cartId}>
-                <p>{item.cartItem.name}</p>
+                <p>{item.cartItem.title}</p>
               </li>
              );
           })}
@@ -121,7 +166,10 @@ const Shop = () =>{
   return(
     <>
       <Navigation num={getTotalOfItems()} cartObj={cart} />
-      {isShopPage() && renderShop() }
+      {loading && (<div>Loading...</div>)}
+      {error && (<div>Error: {error}</div>)}
+      {console.log(apiProducts)}
+      {(!loading && isShopPage()) && renderShop()}
       {isCartPage() && renderCart()}
     </>
   );

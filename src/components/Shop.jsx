@@ -134,7 +134,7 @@ const Shop = () =>{
                   <img className={styles.productThumb} src={product.image} alt={'image of ' + product.name} />
                   <p>Product: {product.title}</p>
                   <p>Price: {product.price}</p>
-                  <input type="text" />
+                  <input type="number" />
                   <button onClick={addToCartHandler}>Add To Cart</button>
                 </div>
               </li>

@@ -79,6 +79,11 @@ const Shop = () =>{
   function removeCartItemHandler(e){
     console.log('removing cart item...');
     console.log(e.target.parentNode.parentNode.id);
+    let id = e.target.parentNode.parentNode.id;
+    
+    setCart(
+      cart.filter((item) => item.cartId !== id)
+    );
   }
 
   function getProductById(id){

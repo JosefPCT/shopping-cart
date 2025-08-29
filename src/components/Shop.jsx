@@ -152,8 +152,11 @@ const Shop = () =>{
         <ul>
           {cart.map(item => {
              return(
-              <li key={item.cartId}>
-                <p>{item.cartItem.title}</p>
+              <li key={item.cartId} id={item.cartId}>
+                <p>{item.cartItem.title}
+                  <button onClick=''>Remove item</button>
+                </p>
+                
               </li>
              );
           })}

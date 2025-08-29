@@ -4,7 +4,6 @@ import styles from'./Shop.module.css';
 import { useState, useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 
-// console.log(products[1]);
 
 const Shop = () =>{
   const [apiProducts, setApiProducts] = useState(null);
@@ -49,18 +48,6 @@ const Shop = () =>{
     console.log("add to cart handler");
     console.log(e.target.parentNode.id);
     let target = e.target;
-    // let x = getProductById(e.target.parentNode.id);
-    // console.log(x);
-
-    // Working code, used for object data type of cart
-    // if(getProductById(target.parentNode.id)){
-    //   setCart(prevCart => ({
-    //     ...prevCart,
-    //     [target.parentNode.id]: {
-    //       numOfProducts: parseInt(target.previousSibling.value),
-    //     },
-    //   }));
-    // }
 
     // Used for array data type of cart items
     setCart([
@@ -97,11 +84,6 @@ const Shop = () =>{
     console.log("getting total items in the cart...");
     console.log(cart);
 
-    // For object type data
-    // for(const [key, value] of Object.entries(cart)){
-    //   total += value.numOfProducts;
-    // }
-
     // For array type data
     let sum = cart.reduce(
       (acc, item) => acc + item.productQuantity,
@@ -116,24 +98,6 @@ const Shop = () =>{
   function renderShop(){
     return(
       <>
-        {/* For local products */}
-        {/* <h1>This is the shop page!</h1>
-        <ul className={styles.productList}>
-          {products.map(product => {
-            return(
-              <li key={product.id}>
-                <div id={product.id} className={styles.productContainer}>
-                  <img className={styles.productThumb} src={`../src/assets/${product.imgname}.jpg`} alt={'image of ' + product.name} />
-                  <p>Product Name: {product.name}</p>
-                  <p>Price: {product.price}</p>
-                  <input type="text" />
-                  <button onClick={addToCartHandler}>Add To Cart</button>
-                </div>
-              </li>
-            );
-          })}
-        </ul> */}
-
         {/* For API products from fakestore api */}
         <h1>This is the shop page!</h1>
         <ul className={styles.productList}>

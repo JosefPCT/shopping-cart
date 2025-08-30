@@ -13,11 +13,11 @@ describe('Home Component Test Suite', () => {
     expect(false).toBe(false);
   });
 
-  it('renders', () => {
+  it('renders the correct button', () => {
     render(
         <BrowserRouter>
             <Home title="React" />
         </BrowserRouter>);
-    screen.debug();
+    expect(screen.getByRole("button").textContent).toMatch(/find a product now/i);
   });
 });

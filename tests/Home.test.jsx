@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import Home from './components/Home';
+import Home from '../src/components/Home';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter, BrowserRouter } from 'react-router-dom';
 

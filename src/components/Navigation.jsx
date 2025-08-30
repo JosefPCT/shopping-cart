@@ -15,7 +15,7 @@ const Navigation = (props) => {
   function shopNavInfo(){
     return(
       <>
-        <span>{props.num}</span>
+        <span data-testid='numCartItems'>{props.num}</span>
         <NavLink
         to='/shop/cart'
         >

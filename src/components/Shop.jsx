@@ -143,7 +143,7 @@ const Shop = () =>{
   return(
     <>
       <Navigation num={getTotalOfItems()} cartObj={cart} />
-      <h1>Shop here</h1>
+      {/* <h1>Shop here</h1> */}
       {loading && (<div>Loading...</div>)}
       {error && (<div>Error: {error}</div>)}
       {/* {console.log(apiProducts)} */}

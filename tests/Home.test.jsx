@@ -21,7 +21,9 @@ describe('Home Component Test Suite', () => {
 
     const link = screen.getByText(/shop/i);
     await userEvent.click(link);
-    expect(screen.getByText(/shop here/i)).toBeInTheDocument();
+    const heading = await screen.findByRole('heading');
+    expect(heading).toHaveTextContent(/this is the shop page!/i);
+    // expect(screen.getByText(/shop here/i)).toBeInTheDocument();
     // expect(screen.getByText(/find a product now/i)).toBeInTheDocument();
   });
 

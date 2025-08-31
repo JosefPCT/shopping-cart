@@ -53,12 +53,44 @@ describe('Shop Component Test Suite', () => {
     expect(span).toHaveTextContent('3');
   })
 
-  it('When clicking cart link, renders cart page', () => {
+  it('When clicking cart link, renders cart page', async () => {
+    const router = createMemoryRouter(routes, { initialEntries: ['/shop']});  
+    render (<RouterProvider router={router} />);
 
+    const cartLink = screen.getByText(/Cart/);
+    const buttons = await screen.findAllByText(/add to cart/i);
+    const inputs = await screen.findAllByTestId('my-input');
+
+    await userEvent.type(inputs[1], '1');
+    await userEvent.click(buttons[1]);
+    await userEvent.click(cartLink);
+
+    const heading = await screen.findAllByRole("heading");
+    expect(heading[0]).toHaveTextContent(/This is the cart page!/i);
   });
 
-  it('When adding cart items, renders the cart item in the cart page', () => {
+  it('When adding cart items, renders the cart item in the cart page', async () => {
     // Have some user event to add to cart
     // Check cart page if rendered the cart items
+
+    const router = createMemoryRouter(routes, { initialEntries: ['/shop']});  
+    render (<RouterProvider router={router} />);
+
+    const cartLink = screen.getByText(/Cart/);
+    const buttons = await screen.findAllByText(/add to cart/i);
+    const inputs = await screen.findAllByTestId('my-input');    
+
+    await userEvent.type(inputs[1], '1');
+    await userEvent.type(inputs[0], '1');
+    await userEvent.click(buttons[0]);
+    await userEvent.click(buttons[1]);
+    await userEvent.click(cartLink);
+
+    const listitems = await screen.findAllByRole('listitem');
+    expect(listitems).toHaveLength(2);
+
+    // const list = await screen.findByRole('list');
+    // expect(list).toBeInTheDocument();
+  
   });
 });

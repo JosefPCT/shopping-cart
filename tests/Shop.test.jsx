@@ -93,4 +93,38 @@ describe('Shop Component Test Suite', () => {
     // expect(list).toBeInTheDocument();
   
   });
+
+  it('When removing cart items, must not have a list item', async () => {
+    // Have some user event to add to cart
+    // Check cart page if rendered the cart items
+
+    const router = createMemoryRouter(routes, { initialEntries: ['/shop']});  
+    render (<RouterProvider router={router} />);
+
+    const cartLink = screen.getByText(/Cart/);
+    const buttons = await screen.findAllByText(/add to cart/i);
+    const inputs = await screen.findAllByTestId('my-input');    
+
+    await userEvent.type(inputs[1], '1');
+    await userEvent.type(inputs[0], '1');
+    await userEvent.click(buttons[0]);
+    await userEvent.click(buttons[1]);
+    await userEvent.click(cartLink);
+
+    const listitems = await screen.findAllByRole('listitem');
+    expect(listitems).toHaveLength(2);
+
+    const removeItem = await screen.findAllByText(/remove item/i);
+
+    await userEvent.click(removeItem[0]);
+
+    const newListitems = await screen.findAllByRole('listitem');
+    expect(newListitems).toHaveLength(1);
+
+
+
+    // const list = await screen.findByRole('list');
+    // expect(list).toBeInTheDocument();
+  
+  });
 });

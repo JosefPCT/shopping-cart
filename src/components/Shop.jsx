@@ -160,7 +160,7 @@ const Shop = () =>{
           <div className={styles.parent}>
             {cart.map((item,ind) => {
               return(
-              <div key={item.cartId} id={item.cartId} className={styles.checkboxContainer} >
+              <div key={item.cartId} id={item.cartId} className={styles.checkboxContainer + ' ' + styles.card} >
                 <input type="checkbox" name="cart" id={ind} value={item.cartId} checked={selectedCartItems.includes(item.cartId)} onChange={handleCheckboxChange} />
                 <label htmlFor={ind}>
                   <div className={styles.cartDiv}>

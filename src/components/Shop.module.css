@@ -62,6 +62,7 @@
 .checkboxContainer{
   padding: 16px;
   border: 1px solid grey;
+  margin: 12px;
 }
 
 .checkboxContainer:hover{

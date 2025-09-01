@@ -10,6 +10,7 @@ const Shop = () =>{
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [cart, setCart] = useState([]);
+  const [selectedCartItems, setSelectedCartItems] = useState([]);
 
   let location = useLocation();
 
@@ -65,8 +66,10 @@ const Shop = () =>{
 
   function removeCartItemHandler(e){
     console.log('removing cart item...');
+    e.preventDefault();
     // console.log(e.target.parentNode.parentNode.id);
-    let id = e.target.parentNode.parentNode.id;
+    let id = e.target.parentNode.parentNode.parentNode.id;
+    // let id = e.target.parentNode.id
     
     setCart(
       cart.filter((item) => item.cartId !== id)
@@ -91,6 +94,27 @@ const Shop = () =>{
     );
 
     return sum;
+  }
+
+  function handleCheckboxChange(e){
+    console.log("Checking items");
+    const { value, checked } = e.target;
+    console.log(`Value: ${value}` );
+    console.log(`Checked: ${typeof checked}`);
+    console.log(`Current array:`);
+    console.log(selectedCartItems);
+
+    if(checked){
+      setSelectedCartItems((prevSelected) => [...prevSelected, value]);
+    } else {
+      // setSelectedCartItems((prevSelected) => prevSelected.filter((item) => item !== value));
+      setSelectedCartItems((prevSelected) => {
+        return prevSelected.filter((item) => item !== value);
+      });
+    }
+
+    console.log(`After method array:`);
+    console.log(selectedCartItems);
   }
 
   // Render JSX
@@ -123,25 +147,39 @@ const Shop = () =>{
     return(
       <>
         <h1>This is the cart page!</h1>
-        <ul>
-          {cart.map(item => {
-             return(
-              <li key={item.cartId} id={item.cartId}>
-                {/* <p>{item.cartItem.title}
-                  <button onClick={removeCartItemHandler}>Remove item</button>
-                </p> */}
-                <div>
-                  <input type="checkbox" name="cart" id={item.cartId}  />
-                  <label for={item.cardId}>{item.cartItem.title}</label>
-                  <button onClick={removeCartItemHandler}>Remove item</button>
-                </div>
-                
-              </li>
-             );
+        <form id='cart-form'>
+          <div className={styles.parent}>
+            {cart.map((item,ind) => {
+              return(
+              <div key={item.cartId} id={item.cartId} className={styles.checkboxContainer} >
+                <input type="checkbox" name="cart" id={ind} value={item.cartId} checked={selectedCartItems.includes(item.cartId)} onChange={handleCheckboxChange} />
+                <label  htmlFor={ind}>
+                  <div className={styles.cartDiv}>
+                    <div>
+                      <img src={item.cartItem.image} alt="a" className={styles.imgThumbSmaller}/>
+                    </div>
+                    <div>
+                      <p>Product: {item.cartItem.title}</p>
+                      <p>Price: {item.cartItem.price}</p>
+                    </div>
+                    <button onClick={removeCartItemHandler}>Remove item</button>
+                  </div>
+                </label>
+              </div>
+              );
           })}
-        </ul>
-        {/* Change to Link, and link to /checkout pass cart items as props as well */}
-        <button>Checkout</button>
+          </div>
+          <div>
+            <button type="submit">Checkout</button>
+          </div>
+        </form>
+        <div>
+          Selected Cart items:{selectedCartItems.map((item) => {
+            return(
+              <p key={item}>{item}</p>
+            )
+          })}
+        </div>
       </>
     );
   }

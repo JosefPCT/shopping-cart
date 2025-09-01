@@ -127,9 +127,14 @@ const Shop = () =>{
           {cart.map(item => {
              return(
               <li key={item.cartId} id={item.cartId}>
-                <p>{item.cartItem.title}
+                {/* <p>{item.cartItem.title}
                   <button onClick={removeCartItemHandler}>Remove item</button>
-                </p>
+                </p> */}
+                <div>
+                  <input type="checkbox" name="cart" id={item.cartId}  />
+                  <label for={item.cardId}>{item.cartItem.title}</label>
+                  <button onClick={removeCartItemHandler}>Remove item</button>
+                </div>
                 
               </li>
              );

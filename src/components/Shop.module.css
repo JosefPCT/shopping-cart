@@ -1,17 +1,51 @@
 .productThumb{
-  width: 100%;
+  width: 300px;
+  height: 300px;
 }
 
 .productContainer{
-  width: 33%;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* .productContainer>div{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+} */
+
+.productContainer p{
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .productList{
   display: flex;
-  gap: 12px;
   flex-wrap: wrap;
+  gap: 12px;
+  list-style: none;
 }
 
-.navContainer{
-  width: 50;
+.productList li{
+  width: 30%;
 }
+
+/* .productList li>div{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+} */
+
+
+.navContainer{
+  width: 50%;
+}
+
+.card{
+
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+

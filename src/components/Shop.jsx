@@ -103,13 +103,13 @@ const Shop = () =>{
         <ul className={styles.productList}>
           {apiProducts.map(product => {
             return(
-              <li key={product.id}>
+              <li key={product.id} className={styles.card}>
                 <div id={product.id} className={styles.productContainer}>
-                  <img className={styles.productThumb} src={product.image} alt={'image of ' + product.name} />
-                  <p>Product: {product.title}</p>
-                  <p>Price: {product.price}</p>
-                  <input type="number" data-testid='my-input'/>
-                  <button onClick={addToCartHandler}>Add To Cart</button>
+                    <img className={styles.productThumb} src={product.image} alt={'image of ' + product.name} />
+                    <p>Product: {product.title}</p>
+                    <p>Price: {product.price}</p>
+                    <input type="number" data-testid='my-input'/>
+                    <button onClick={addToCartHandler}>Add To Cart</button>
                 </div>
               </li>
             );
@@ -135,6 +135,7 @@ const Shop = () =>{
              );
           })}
         </ul>
+        {/* Change to Link, and link to /checkout pass cart items as props as well */}
         <button>Checkout</button>
       </>
     );

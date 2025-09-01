@@ -100,6 +100,25 @@ const Shop = () =>{
     return sum;
   }
 
+  function getTotalPriceSelectedItems(){
+    console.log("Getting total price...");
+    // console.log('Selected Cart Items');
+    // console.log(selectedCartItems);
+    
+    let selectedItems = cart.filter((item) => {
+      // console.log('Current item:');
+      // console.log(item.cartId);
+      return selectedCartItems.includes(item.cartId);
+    });
+    // console.log('Selected items:')
+    // console.log(selectedItems);
+
+    return selectedItems.reduce(
+      (acc, item) => acc + (item.cartItem.price * item.productQuantity),
+      0,
+    );
+  }
+
   function handleCheckboxChange(e){
     console.log("Checking items");
     const { value, checked } = e.target;
@@ -123,6 +142,7 @@ const Shop = () =>{
 
   function handleCheckout(e){
     e.preventDefault();
+    console.log("Checking out these items:...");
     console.log(selectedCartItems);
   }
 
@@ -156,7 +176,7 @@ const Shop = () =>{
     return(
       <>
         <h1>This is the cart page!</h1>
-        <form id='cart-form' onSubmit={handleCheckout}>
+        <form id={styles.cartForm} onSubmit={handleCheckout}>
           <div className={styles.parent}>
             {cart.map((item,ind) => {
               return(
@@ -170,6 +190,7 @@ const Shop = () =>{
                     <div>
                       <p>Product: {item.cartItem.title}</p>
                       <p>Price: {item.cartItem.price}</p>
+                      <p>Quantity: {item.productQuantity}</p>
                     </div>
                     <button onClick={removeCartItemHandler}>Remove item</button>
                   </div>
@@ -178,17 +199,19 @@ const Shop = () =>{
               );
           })}
           </div>
-          <div>
+          <div className={styles.padSpace}>
             <button type="submit">Checkout</button>
+            <div>
+              <p>Total Price: {getTotalPriceSelectedItems()}</p>
+              Selected Cart items:{selectedCartItems.map((item) => {
+                return(
+                  <p key={item}>{item}</p>
+                )
+              })}
+        </div>
           </div>
         </form>
-        <div>
-          Selected Cart items:{selectedCartItems.map((item) => {
-            return(
-              <p key={item}>{item}</p>
-            )
-          })}
-        </div>
+        
       </>
     );
   }

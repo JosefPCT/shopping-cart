@@ -76,3 +76,12 @@
 .checkboxContainer:has(input[type="checkbox"]:checked){
   border: 1px solid blue;
 }
+
+#cartForm{
+  display: flex;
+  justify-content: space-between;
+}
+
+.padSpace{
+  padding: 15px;
+}

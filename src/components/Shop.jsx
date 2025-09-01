@@ -117,6 +117,11 @@ const Shop = () =>{
     console.log(selectedCartItems);
   }
 
+  function handleCartSubmit(e){
+    e.preventDefault();
+    console.log(selectedCartItems);
+  }
+
   // Render JSX
 
   function renderShop(){
@@ -147,13 +152,13 @@ const Shop = () =>{
     return(
       <>
         <h1>This is the cart page!</h1>
-        <form id='cart-form'>
+        <form id='cart-form' onSubmit={handleCartSubmit}>
           <div className={styles.parent}>
             {cart.map((item,ind) => {
               return(
               <div key={item.cartId} id={item.cartId} className={styles.checkboxContainer} >
                 <input type="checkbox" name="cart" id={ind} value={item.cartId} checked={selectedCartItems.includes(item.cartId)} onChange={handleCheckboxChange} />
-                <label  htmlFor={ind}>
+                <label htmlFor={ind}>
                   <div className={styles.cartDiv}>
                     <div>
                       <img src={item.cartItem.image} alt="a" className={styles.imgThumbSmaller}/>

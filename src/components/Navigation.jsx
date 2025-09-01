@@ -10,7 +10,7 @@ const Navigation = (props) => {
   }
 
   console.log("nav comp");
-  console.log(props.cartObj);
+  // console.log(props.cartObj);
 
   function shopNavInfo(){
     return(

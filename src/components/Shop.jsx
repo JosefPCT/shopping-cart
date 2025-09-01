@@ -103,10 +103,10 @@ const Shop = () =>{
   function handleCheckboxChange(e){
     console.log("Checking items");
     const { value, checked } = e.target;
-    console.log(`Value: ${value}` );
-    console.log(`Checked: ${typeof checked}`);
-    console.log(`Current array:`);
-    console.log(selectedCartItems);
+    // console.log(`Value: ${value}` );
+    // console.log(`Checked: ${typeof checked}`);
+    // console.log(`Current array:`);
+    // console.log(selectedCartItems);
 
     if(checked){
       setSelectedCartItems((prevSelected) => [...prevSelected, value]);
@@ -117,8 +117,8 @@ const Shop = () =>{
       });
     }
 
-    console.log(`After method array:`);
-    console.log(selectedCartItems);
+    // console.log(`After method array:`);
+    // console.log(selectedCartItems);
   }
 
   function handleCheckout(e){

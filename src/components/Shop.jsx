@@ -74,6 +74,10 @@ const Shop = () =>{
     setCart(
       cart.filter((item) => item.cartId !== id)
     );
+
+     setSelectedCartItems((prevSelected) => {
+        return prevSelected.filter((item) => item !== id);
+      });
   }
 
   function getProductById(id){
@@ -117,7 +121,7 @@ const Shop = () =>{
     console.log(selectedCartItems);
   }
 
-  function handleCartSubmit(e){
+  function handleCheckout(e){
     e.preventDefault();
     console.log(selectedCartItems);
   }
@@ -152,7 +156,7 @@ const Shop = () =>{
     return(
       <>
         <h1>This is the cart page!</h1>
-        <form id='cart-form' onSubmit={handleCartSubmit}>
+        <form id='cart-form' onSubmit={handleCheckout}>
           <div className={styles.parent}>
             {cart.map((item,ind) => {
               return(
